@@ -1,0 +1,1 @@
+import * as readlinesync from "readline-sync";
