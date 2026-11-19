@@ -1,7 +1,19 @@
-JUDUL
+[1. DAFTAR ANGGOTA KELOMPOK 10
+DEDHEN NUGRAHANDI STYOWIDI - 263140700111031
+GIOVNANI SEBASTIAN HIA - 263140700111055 ]
 
-DESKRIPSISI SINGKAT
+[2. AKUN GITHUB KELOMPOK 10
+* Dedhen Nugrahandi Styowidi _ Dedhen23
+* Giovanni Sebastian Hia _ giovanni123sh-dev]
 
-Cara menjalankan program (npm install lalu npx ts-node src/index.ts).
+[3. PEMBAGIAN TUGAS 
+GIOVANNI SEBASTIAN HIA: Setup Repository, 
+Struktur Data, 
+Logika Skor Prioritas, 
+Fitur Create & Update, Laporan Bab I.
 
-Tabel pembagian tugas & kontribusi (berisi Nama, NIM, akun GitHub Gio dan Dedhen, serta bagian tugas masing-masing)
+DEDHEN NUGRAHANDI STYOWIDI:
+Menu Utama, 
+Fitur Read,
+ Delete & Search, 
+ Flowchart Bab II & Screenshot]
