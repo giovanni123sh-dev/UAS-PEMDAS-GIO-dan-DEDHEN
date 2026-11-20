@@ -36,3 +36,16 @@ let daftarTugas: Tugas[] = [];
 let idTugas: number = 1;
 let appberjalan: boolean = true;
 
+function menu (): void {
+    console.log("=== Aplikasi Prioritas Tugas ===");
+    console.log("1. Tambah Tugas"); // ini create
+    console.log("2. Lihat Daftar Tugas"); //ini read
+    console.log("3. Lihat Daftar Tugas Berdasarkan Id");
+    console.log("4. Ubah Tugas"); // ini Update
+    console.log("5. Hapus Tugas"); // ini delete
+    console.log("6. Cari Tugas") // in search
+    console.log("7. Tabel Prioritas dan Jadwal Hari ini")
+    console.log("0. Keluar");
+    console.log("================================");
+}
+

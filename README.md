@@ -8,12 +8,11 @@ GIOVNANI SEBASTIAN HIA - 263140700111055 ]
 
 [3. PEMBAGIAN TUGAS 
 GIOVANNI SEBASTIAN HIA: Setup Repository, 
-Struktur Data, 
+Struktur Data, Menu Utama
 Logika Skor Prioritas, 
 Fitur Create & Update, Laporan Bab I.
 
-DEDHEN NUGRAHANDI STYOWIDI:
-Menu Utama, 
+DEDHEN NUGRAHANDI STYOWIDI:, 
 Fitur Read,
  Delete & Search, 
  Flowchart Bab II & Screenshot]
