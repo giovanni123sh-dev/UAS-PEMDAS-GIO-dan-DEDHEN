@@ -1,5 +1,3 @@
-import * as readlinesync from "readline-sync";
-
 interface Tugas {
     id: number;
     nama: string;
