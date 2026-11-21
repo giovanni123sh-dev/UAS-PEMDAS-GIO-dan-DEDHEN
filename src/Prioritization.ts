@@ -49,3 +49,30 @@ function menu (): void {
     console.log("================================");
 }
 
+function konversiKeDetik(nilai: number, satuan: number): number {
+    let pengali: number = 1;
+    switch (satuan) {
+        case 1:
+            pengali = 1
+            break;
+            case 2:
+                pengali = 60
+                break;
+                case 3:
+                    pengali = 60 * 60
+                    break
+                    case 4:
+                        pengali = 60 * 60 * 24
+                        break
+                        case 5: 
+                        pengali = 60 * 60 * 24 * 7
+                        break;
+                        case 6: 
+                            pengali = 60 * 60 * 24 * 30
+                            break;
+                            default:
+                            pengali = 1
+                            break;
+    }
+    return nilai * pengali;
+}
