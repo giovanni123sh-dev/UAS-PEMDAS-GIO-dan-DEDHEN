@@ -76,3 +76,25 @@ function konversiKeDetik(nilai: number, satuan: number): number {
     }
     return nilai * pengali;
 }
+
+function formatDurasi(detik: number): string {
+    let angka: number = detik;
+    let satuan: string = "detik";
+    if (detik >= 60 * 60 * 24 * 7 * 30) {
+        angka = detik / (60 * 60 * 24 * 7 * 30);
+        satuan = "bulan";
+    } else if (detik >= 60 * 60 * 24 * 7 ) {
+        angka = detik / (60 * 60 * 24 * 7);
+        satuan = "minggu";
+    } else if (detik >= 60 * 60 * 24) {
+        angka = detik / (60 * 60 * 24);
+        satuan = "hari";
+    } else if (detik >= 60 * 60) {
+        angka = detik / (60 * 60);
+        satuan = "jam";
+    } else if (detik >= 60) {
+        angka = detik / 60;
+        satuan = "menit";
+    }
+    return `${Math.round(angka *10)/10} ${satuan}`;
+}
