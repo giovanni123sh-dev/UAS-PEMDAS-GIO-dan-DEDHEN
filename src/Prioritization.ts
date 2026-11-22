@@ -124,3 +124,8 @@ function labelSisaWaktu(sisaHari: number): string {
   }
   return `${sisaHari} hari`;
 }
+
+function cariBobotKategori(nama: string): number {
+  const kategori: kategori | undefined = daftarKategori.find((k) => k.nama === nama);
+  return kategori === undefined ? 0 : kategori.bobot;
+}
