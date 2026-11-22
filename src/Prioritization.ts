@@ -98,3 +98,11 @@ function formatDurasi(detik: number): string {
     }
     return `${Math.round(angka *10)/10} ${satuan}`;
 }
+
+function parseTanggal(teks: string): Date{
+    const tanggal: string[] = teks.split("-");
+    const hari: number = Number(tanggal[0]);
+    const bulan: number = Number(tanggal[1]);
+    const tahun: number = Number(tanggal[2]);
+    return new Date(tahun, bulan -1, hari);
+}
