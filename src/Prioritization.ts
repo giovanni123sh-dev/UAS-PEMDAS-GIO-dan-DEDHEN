@@ -98,3 +98,29 @@ function formatDurasi(detik: number): string {
     }
     return `${Math.round(angka *10)/10} ${satuan}`;
 }
+
+function parseTanggal(teks: string): Date {
+  const bagian: string[] = teks.split("-");
+  const hari: number = Number(bagian[0]);
+  const bulan: number = Number(bagian[1]);
+  const tahun: number = Number(bagian[2]);
+  return new Date(tahun, bulan - 1, hari);
+}
+
+function hitungSisaHari(deadline: string): number {
+  const target: Date = parseTanggal(deadline);
+  const hariIni: Date = new Date();
+  hariIni.setHours(0, 0, 0, 0);
+  const selisih: number = (target.getTime() - hariIni.getTime()) / (1000 * 60 * 60 * 24);
+  return Math.round(selisih);
+}
+
+function labelSisaWaktu(sisaHari: number): string {
+  if (sisaHari < 0) {
+    return `Lewat ${Math.abs(sisaHari)} hari`;
+  }
+  if (sisaHari === 0) {
+    return "Hari ini";
+  }
+  return `${sisaHari} hari`;
+}
