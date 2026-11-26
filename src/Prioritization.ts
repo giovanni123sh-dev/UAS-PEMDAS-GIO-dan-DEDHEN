@@ -231,4 +231,4 @@ const labelKesulitan = (nilai: number): string => {
       break;
   }
   return label;
-};
+}
