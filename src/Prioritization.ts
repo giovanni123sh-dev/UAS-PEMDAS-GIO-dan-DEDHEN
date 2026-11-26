@@ -162,3 +162,25 @@ const kesulitan: number = tugas.kesulitan * 6;
 
   return { waktu, kesulitan, kategori, bonus };
 }
+
+function hitungSkorPrioritas(tugas: Tugas): number {
+  const poin: nilaiSkor = hitungNilaiSkor(tugas);
+  let skor: number = poin.waktu + poin.kesulitan + poin.kategori + poin.bonus;
+
+  if (tugas.status === "selesai") {
+    skor *= 0;
+  }
+  skor /= 1.1;
+
+  return Math.round(skor * 10) / 10;
+}
+
+const labelLevel = (skor: number): string => {
+  if (skor >= 70) {
+    return "TINGGI";
+  } else if (skor >= 45) {
+    return "SEDANG";
+  } else {
+    return "RENDAH";
+  }
+};
