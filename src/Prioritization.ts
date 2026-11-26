@@ -1,9 +1,9 @@
 interface Tugas {
     id: number;
     nama: string;
-    kategori: string | number
+    kategori: string 
     kesulitan: number;
-    deadline: string | number;
+    deadline: string 
     estimasi: number
     status: string;
 }
@@ -129,3 +129,58 @@ function cariBobotKategori(nama: string): number {
   const kategori: kategori | undefined = daftarKategori.find((k) => k.nama === nama);
   return kategori === undefined ? 0 : kategori.bobot;
 }
+function hitungNilaiSkor(tugas: Tugas): nilaiSkor {
+  const sisaHari: number = hitungSisaHari(tugas.deadline);
+  let waktu: number = 0;
+
+  if (sisaHari < 0) {
+    waktu += 60;
+  } else if (sisaHari <= 1) {
+    waktu += 50;
+  } else if (sisaHari <= 3) {
+    waktu += 40;
+  } else if (sisaHari <= 7) {
+    waktu += 25;
+  } else {
+    waktu += 10;
+  }
+
+
+const kesulitan: number = tugas.kesulitan * 6;
+  const kategori: number = cariBobotKategori(tugas.kategori);
+  let bonus: number = 0;
+  const durasiJam: number = tugas.estimasi/ 3600;
+
+  if (durasiJam >= 5 && sisaHari <= 7) {
+    bonus += 10;
+  }
+
+  if (tugas.status === "proses") {
+    bonus -= 5;
+  }
+
+  return { waktu, kesulitan, kategori, bonus };
+}
+
+function hitungSkorPrioritas(tugas: Tugas): number {
+  const poin: nilaiSkor = hitungNilaiSkor(tugas);
+  let skor: number = poin.waktu + poin.kesulitan + poin.kategori + poin.bonus;
+
+  if (tugas.status === "selesai") {
+    skor *= 0;
+  }
+  skor /= 1.1;
+
+  return Math.round(skor * 10) / 10;
+}
+
+const labelLevel = (skor: number): string => {
+  if (skor >= 70) {
+    return "TINGGI";
+  } else if (skor >= 45) {
+    return "SEDANG";
+  } else {
+    return "RENDAH";
+  }
+};
+
