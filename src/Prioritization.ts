@@ -258,3 +258,75 @@ function buatSaran(tugas: Tugas): string {
 function tanya(pertanyaan: string): string {
   return readlineSync.question(pertanyaan).trim();
 }
+
+
+function tambahTugas(): void {
+  console.log("Fitur Tambah Tugas akan diimplementasikan pada Progress 3.");
+}
+
+function lihatSemua(): void {
+  console.log("Fitur Lihat Semua Tugas akan diimplementasikan pada Progress 3.");
+}
+
+function lihatDetail(): void {
+  console.log("Fitur Lihat Detail Tugas akan diimplementasikan pada Progress 3.");
+}
+
+function ubahTugas(): void {
+  console.log("Fitur Ubah Tugasakan diimplementasikan pada Progress 3.");
+}
+
+function hapusTugas(): void {
+  console.log("Fitur Hapus Tugas akan diimplementasikan pada Progress 3.");
+}
+
+function cariTugas(): void {
+  console.log("Fitur Cari Tugas akan diimplementasikan pada Progress 4.");
+}
+
+function rekomendasiPrioritas(): void {
+  console.log("Fitur Tabel Prioritas & Jadwal akan diimplementasikan pada Progress 4.");
+}
+
+function main(): void {
+  console.log("Selamat datang di PRIORITIZATION - penentu prioritas kegiatanmu!");
+
+  while (appberjalan) {
+    menu();
+    const pilihan: string = tanya("Pilih menu: ");
+
+    switch (pilihan) {
+      case "1":
+        tambahTugas();
+        break;
+      case "2":
+        lihatSemua();
+        break;
+      case "3":
+        lihatDetail();
+        break;
+      case "4":
+        ubahTugas();
+        break;
+      case "5":
+        hapusTugas();
+        break;
+      case "6":
+        cariTugas();
+        break;
+      case "7":
+        rekomendasiPrioritas();
+        break;
+      case "0":
+        appberjalan = false;
+        console.log("Terima kasih, semangat mengerjakan tugasmu!");
+        break;
+      default:
+        // Penanganan input menu yang tidak valid
+        console.log("  ! Pilihan menu tidak valid, coba lagi.");
+        break;
+    }
+  }
+}
+
+main();0
