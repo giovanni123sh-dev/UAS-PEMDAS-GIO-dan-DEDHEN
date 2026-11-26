@@ -1,3 +1,5 @@
+import * as readlineSync from "readline-sync"
+
 interface Tugas {
     id: number;
     nama: string;
@@ -184,3 +186,75 @@ const labelLevel = (skor: number): string => {
     return "RENDAH";
   }
 };
+
+function formatTanggal(tanggal: Date): string {
+  const tahun: number = tanggal.getFullYear();
+  const bulan: string = String(tanggal.getMonth() + 1).padStart(2, "0");
+  const hari: string = String(tanggal.getDate()).padStart(2, "0");
+  return `${hari}-${bulan}-${tahun}`;
+}
+
+function hitungTanggalMulai(tugas: Tugas): string {
+  const durasiJam: number = tugas.estimasi / 3600;
+  let hariButuh: number = Math.max(1, Math.ceil(durasiJam / jam_kerja_perhari));
+  if (tugas.kesulitan >= 4) {
+    hariButuh += 1;
+  }
+  const tanggalMulai: Date = parseTanggal(tugas.deadline);
+  tanggalMulai.setDate(tanggalMulai.getDate() - hariButuh);
+
+  const hariIni: Date = new Date();
+  hariIni.setHours(0, 0, 0, 0);
+
+  if (tanggalMulai < hariIni) {
+    return `Hari ini (${formatTanggal(hariIni)})`;
+  }
+
+  return formatTanggal(tanggalMulai);
+}
+
+const labelKesulitan = (nilai: number): string => {
+  let label: string = "";
+  switch (nilai) {
+    case 1:
+      label = "Sangat mudah";
+      break;
+    case 2:
+      label = "Mudah";
+      break;
+    case 3:
+      label = "Sedang";
+      break;
+    case 4:
+      label = "Sulit";
+      break;
+    default:
+      label = "Sangat sulit";
+      break;
+  }
+  return label;
+}
+
+function buatSaran(tugas: Tugas): string {
+  let saran: string = "Kerjakan sesuai jadwal.";
+  const sisaHari: number = hitungSisaHari(tugas.deadline);
+
+
+  if (tugas.status !== "selesai") {
+    if (sisaHari <= 3) {
+      if (tugas.kesulitan >= 4) {
+        saran = "SEGERA mulai! Tugas sulit dan deadline dekat.";
+      } else {
+        saran = "Selesaikan dalam waktu dekat.";
+      }
+    }
+  } else {
+    saran = "Sudah selesai, bagus!";
+  }
+
+  return saran;
+}
+
+function tanya(pertanyaan: string): string {
+  return readlineSync.question(pertanyaan).trim();
+}
