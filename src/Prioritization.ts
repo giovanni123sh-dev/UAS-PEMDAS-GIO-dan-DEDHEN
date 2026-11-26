@@ -183,4 +183,3 @@ const labelLevel = (skor: number): string => { //level prioritas
     return "RENDAH";
   }
 };
-
