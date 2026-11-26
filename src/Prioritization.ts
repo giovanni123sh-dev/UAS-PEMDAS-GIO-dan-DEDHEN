@@ -184,3 +184,29 @@ const labelLevel = (skor: number): string => {
     return "RENDAH";
   }
 };
+
+function formatTanggal(tanggal: Date): string {
+  const tahun: number = tanggal.getFullYear();
+  const bulan: string = String(tanggal.getMonth() + 1).padStart(2, "0");
+  const hari: string = String(tanggal.getDate()).padStart(2, "0");
+  return `${hari}-${bulan}-${tahun}`;
+}
+
+function hitungTanggalMulai(tugas: Tugas): string {
+  const durasiJam: number = tugas.estimasi / 3600;
+  let hariButuh: number = Math.max(1, Math.ceil(durasiJam / jam_kerja_perhari));
+  if (tugas.kesulitan >= 4) {
+    hariButuh += 1;
+  }
+  const tanggalMulai: Date = parseTanggal(tugas.deadline);
+  tanggalMulai.setDate(tanggalMulai.getDate() - hariButuh);
+
+  const hariIni: Date = new Date();
+  hariIni.setHours(0, 0, 0, 0);
+
+  if (tanggalMulai < hariIni) {
+    return `Hari ini (${formatTanggal(hariIni)})`;
+  }
+
+  return formatTanggal(tanggalMulai);
+}
