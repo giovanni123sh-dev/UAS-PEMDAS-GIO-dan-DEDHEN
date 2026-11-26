@@ -174,7 +174,7 @@ function hitungSkorPrioritas(tugas: Tugas): number {
   return Math.round(skor * 10) / 10;
 }
 
-const labelLevel = (skor: number): string => {
+const labelLevel = (skor: number): string => { //level prioritas
   if (skor >= 70) {
     return "TINGGI";
   } else if (skor >= 45) {
