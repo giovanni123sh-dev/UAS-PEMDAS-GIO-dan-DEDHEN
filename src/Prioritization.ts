@@ -210,3 +210,25 @@ function hitungTanggalMulai(tugas: Tugas): string {
 
   return formatTanggal(tanggalMulai);
 }
+
+const labelKesulitan = (nilai: number): string => {
+  let label: string = "";
+  switch (nilai) {
+    case 1:
+      label = "Sangat mudah";
+      break;
+    case 2:
+      label = "Mudah";
+      break;
+    case 3:
+      label = "Sedang";
+      break;
+    case 4:
+      label = "Sulit";
+      break;
+    default:
+      label = "Sangat sulit";
+      break;
+  }
+  return label;
+};
