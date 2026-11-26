@@ -1,3 +1,5 @@
+import * as readlineSync from "readline-sync"
+
 interface Tugas {
     id: number;
     nama: string;
@@ -231,4 +233,28 @@ const labelKesulitan = (nilai: number): string => {
       break;
   }
   return label;
+}
+
+function buatSaran(tugas: Tugas): string {
+  let saran: string = "Kerjakan sesuai jadwal.";
+  const sisaHari: number = hitungSisaHari(tugas.deadline);
+
+
+  if (tugas.status !== "selesai") {
+    if (sisaHari <= 3) {
+      if (tugas.kesulitan >= 4) {
+        saran = "SEGERA mulai! Tugas sulit dan deadline dekat.";
+      } else {
+        saran = "Selesaikan dalam waktu dekat.";
+      }
+    }
+  } else {
+    saran = "Sudah selesai, bagus!";
+  }
+
+  return saran;
+}
+
+function tanya(pertanyaan: string): string {
+  return readlineSync.question(pertanyaan).trim();
 }
